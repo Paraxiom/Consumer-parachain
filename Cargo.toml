@@ -1,8 +1,18 @@
 [workspace]
+resolver = "2"
+
 members = [
-    "node",
-    "pallets/template",
-    "runtime",
+	"pallets/registry",
+	"node",
+	"runtime/paraxiom",
+	"pallets/offchain-rollup",
 ]
+
 [profile.release]
 panic = "unwind"
+opt-level = 3
+
+[profile.production]
+inherits = "release"
+lto = true
+codegen-units = 1
